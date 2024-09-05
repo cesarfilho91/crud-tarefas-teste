@@ -12,10 +12,10 @@ app.use(cors({
 
 app.use(express.json());
 
-const mongoURI = process.env.MONGO_URL;
-const NODE_ENV = process.env.NODE_ENV || 'development';
-
-mongoose.connect(mongoURI)
+mongoose.connect(process.env.mongoURI, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true
+  })
   .then(() => console.log('Conectado ao MongoDB'))
   .catch(err => console.error('Erro ao conectar ao MongoDB', err));
 
