@@ -1,3 +1,5 @@
+require('dotenv').config();
+
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
@@ -5,20 +7,17 @@ const app = express();
 const taskRoutes = require('./routes/task');
 
 app.use(cors({
-  origin: '*',
+  origin: '*', 
 }));
 
 app.use(express.json());
 
-const mongoURI = 'mongodb://mongo:NUwGKyDrZguPCEQwzjcgZffFGtDnvOqK@autorack.proxy.rlwy.net:44944';
-const NODE_ENV='production';
+const mongoURI = process.env.MONGO_URL;
+const NODE_ENV = process.env.NODE_ENV || 'development';
 
-mongoose.connect(mongoURI, {
-  //useNewUrlParser: true,
-  //useUnifiedTopology: true
-})
-.then(() => console.log('Conectado ao MongoDB'))
-.catch(err => console.error('Erro ao conectar ao MongoDB', err));
+mongoose.connect(mongoURI)
+  .then(() => console.log('Conectado ao MongoDB'))
+  .catch(err => console.error('Erro ao conectar ao MongoDB', err));
 
 app.use('/api/tarefas', taskRoutes);
 
