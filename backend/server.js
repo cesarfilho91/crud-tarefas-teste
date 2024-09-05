@@ -10,7 +10,7 @@ app.use(cors({
 
 app.use(express.json());
 
-const mongoURI = 'mongodb://mongo:NUwGKyDrZguPCEQwzjcgZffFGtDnvOqK@mongodb.railway.internal:27017/test';
+const mongoURI = 'mongodb://mongo:NUwGKyDrZguPCEQwzjcgZffFGtDnvOqK@autorack.proxy.rlwy.net:44944';
 if (!mongoURI) {
   console.error('A variável de ambiente MONGO_URL não está definida.');
   process.exit(1);
