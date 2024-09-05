@@ -10,14 +10,20 @@ app.use(cors({
 
 app.use(express.json());
 
-app.use('/api/tarefas', taskRoutes);
+const mongoURI = process.env.MONGO_URL;
+if (!mongoURI) {
+  console.error('A variável de ambiente MONGO_URL não está definida.');
+  process.exit(1);
+}
 
-mongoose.connect(process.env.MONGO_URL, {
+mongoose.connect(mongoURI, {
   useNewUrlParser: true,
   useUnifiedTopology: true
 })
 .then(() => console.log('Conectado ao MongoDB'))
 .catch(err => console.error('Erro ao conectar ao MongoDB', err));
+
+app.use('/api/tarefas', taskRoutes);
 
 app.listen(5000, () => {
   console.log('Servidor rodando na porta 5000');
