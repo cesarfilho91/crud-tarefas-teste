@@ -11,7 +11,7 @@ app.use(cors({
 app.use(express.json());
 
 const mongoURI = 'mongodb://mongo:NUwGKyDrZguPCEQwzjcgZffFGtDnvOqK@autorack.proxy.rlwy.net:44944';
-const NODE_ENV=production
+const NODE_ENV='production';
 
 mongoose.connect(mongoURI, {
   //useNewUrlParser: true,
