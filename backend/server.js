@@ -4,6 +4,8 @@ const cors = require('cors');
 const app = express();
 const taskRoutes = require('./routes/task');
 
+require('dotenv').config();
+
 app.use(cors({
   origin: '*',
 }));
@@ -12,11 +14,15 @@ app.use(express.json());
 
 app.use('/api/tarefas', taskRoutes);
 
-const PORT = process.env.PORT || 5000;
-mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true })
-  .then(() => {
-    app.listen(PORT, () => {
-      console.log(`Servidor rodando na porta ${PORT}`);
-    });
-  })
-  .catch(error => console.error('Erro ao conectar ao MongoDB:', error));
+mongoose.connect(process.env.MONGO_URI, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true
+})
+.then(() => console.log('Conectado ao MongoDB'))
+.catch(err => console.error('Erro ao conectar ao MongoDB', err));
+
+app.use('/api/tarefas', taskRoutes);
+
+app.listen(5000, () => {
+  console.log('Servidor rodando na porta 5000');
+});
