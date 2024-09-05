@@ -33,10 +33,10 @@ const List = ({ tasksUpdated }) => {
   const handleDelete = async (id) => {
     try {
       //const response = await fetch(`http://localhost:5000/api/tarefas/${id}`, {
-      const response = await fetch(`https://web-production-08d1.up.railway.app/tarefas/${id}`, {
+      const response = await fetch(`https://web-production-08d1.up.railway.app/api/tarefas/${id}`, {
         method: 'DELETE',
       });
-
+  
       if (response.ok) {
         setTasks(tasks.filter(task => task._id !== id));
       } else {
