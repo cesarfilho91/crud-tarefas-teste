@@ -4,7 +4,11 @@ const cors = require('cors');
 const app = express();
 const taskRoutes = require('./routes/task');
 
-app.use(cors());
+//app.use(cors());
+app.use(cors({
+  origin: 'https://crud-tarefas-teste-2wua0yhzn.vercel.app',
+}));
+
 app.use(express.json()); 
 
 app.use('/api/tarefas', taskRoutes);
