@@ -12,7 +12,7 @@ app.use(cors({
 
 app.use(express.json());
 
-mongoose.connect(process.env.mongoURI, {
+mongoose.connect(process.env.mongoURL, {
     useNewUrlParser: true,
     useUnifiedTopology: true
   })
