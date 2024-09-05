@@ -3,7 +3,6 @@ const mongoose = require('mongoose');
 const cors = require('cors');
 const app = express();
 const taskRoutes = require('./routes/task');
-require('dotenv').config();
 
 app.use(cors({
   origin: '*',
@@ -13,14 +12,7 @@ app.use(express.json());
 
 app.use('/api/tarefas', taskRoutes);
 
-const mongoUri = process.env.MONGO_URL;
-
-if (!mongoUri) {
-  console.error('A variável de ambiente MONGO_URL não está definida.');
-  process.exit(1);
-}
-
-mongoose.connect(mongoUri, {
+mongoose.connect(process.env.MONGO_URL, {
   useNewUrlParser: true,
   useUnifiedTopology: true
 })
