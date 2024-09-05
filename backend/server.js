@@ -10,7 +10,7 @@ app.use(cors({
 
 app.use(express.json());
 
-const mongoURI = 'mongodb://mongo:NUwGKyDrZguPCEQwzjcgZffFGtDnvOqK@autorack.proxy.rlwy.net:44944';
+const mongoURI = 'mongodb://mongo:NUwGKyDrZguPCEQwzjcgZffFGtDnvOqK@autorack.proxy.rlwy.net:44944/test';
 
 mongoose.connect(mongoURI, {
   //useNewUrlParser: true,
