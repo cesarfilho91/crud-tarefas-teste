@@ -13,7 +13,14 @@ app.use(express.json());
 
 app.use('/api/tarefas', taskRoutes);
 
-mongoose.connect(process.env.MONGO_URL, {
+const mongoUri = process.env.MONGO_URL;
+
+if (!mongoUri) {
+  console.error('A variável de ambiente MONGO_URL não está definida.');
+  process.exit(1);
+}
+
+mongoose.connect(mongoUri, {
   useNewUrlParser: true,
   useUnifiedTopology: true
 })
