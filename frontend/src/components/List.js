@@ -11,7 +11,8 @@ const List = ({ tasksUpdated }) => {
 
   const fetchTasks = async () => {
     try {
-      const response = await fetch('http://localhost:5000/api/tarefas');
+      //const response = await fetch('http://localhost:5000/api/tarefas');
+      const response = await fetch('https://web-production-08d1.up.railway.app/api/tarefas');
       if (response.ok) {
         const data = await response.json();
         setTasks(data);
@@ -31,7 +32,8 @@ const List = ({ tasksUpdated }) => {
 
   const handleDelete = async (id) => {
     try {
-      const response = await fetch(`http://localhost:5000/api/tarefas/${id}`, {
+      //const response = await fetch(`http://localhost:5000/api/tarefas/${id}`, {
+      const response = await fetch(`https://web-production-08d1.up.railway.app/tarefas/${id}`, {
         method: 'DELETE',
       });
 
