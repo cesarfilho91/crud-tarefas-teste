@@ -3,7 +3,6 @@ const mongoose = require('mongoose');
 const cors = require('cors');
 const app = express();
 const taskRoutes = require('./routes/task');
-
 require('dotenv').config();
 
 app.use(cors({
@@ -21,8 +20,7 @@ mongoose.connect(process.env.MONGO_URI, {
 .then(() => console.log('Conectado ao MongoDB'))
 .catch(err => console.error('Erro ao conectar ao MongoDB', err));
 
-app.use('/api/tarefas', taskRoutes);
-
-app.listen(5000, () => {
-  console.log('Servidor rodando na porta 5000');
+const PORT = process.env.PORT || 5000;
+app.listen(PORT, () => {
+  console.log(`Servidor rodando na porta ${PORT}`);
 });
